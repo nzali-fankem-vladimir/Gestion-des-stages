@@ -1,0 +1,31 @@
+<header class="h-16 bg-white border-b flex items-center justify-between px-4">
+  <!-- Logo left -->
+  <div class="flex items-center gap-3">
+    <div class="w-9 h-9 rounded bg-indigo-600 flex items-center justify-center text-white font-semibold">GS</div>
+    <span class="text-lg font-semibold">Gestion Des Stages</span>
+  </div>
+
+  <!-- User info right - only show if user is logged in -->
+  <div *ngIf="isLoggedIn" class="flex items-center gap-4">
+    <!-- Notifications bell -->
+    <a routerLink="/notifications" class="relative inline-flex items-center justify-center w-10 h-10 rounded-full hover:bg-gray-100">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6 text-gray-700">
+        <path d="M12 2a6 6 0 00-6 6v3.586l-.707.707A1 1 0 006 14h12a1 1 0 00.707-1.707L18 11.586V8a6 6 0 00-6-6z" />
+        <path d="M8 16a4 4 0 008 0H8z" />
+      </svg>
+      <span *ngIf="(unread$ | async) as unread" class="absolute -top-1 -right-1">
+        <span *ngIf="unread > 0" class="min-w-[1.25rem] h-5 px-1 rounded-full bg-red-600 text-white text-xs flex items-center justify-center">{{ unread }}</span>
+      </span>
+    </a>
+    <div class="text-right hidden sm:block">
+      <div class="text-sm font-medium">{{ userName }}</div>
+      <div class="text-xs text-gray-500">{{ userRole }}</div>
+    </div>
+    <img [src]="userAvatar" alt="avatar" class="w-10 h-10 rounded-full object-cover border" />
+    <button (click)="onLogout()" class="hidden sm:inline-flex items-center gap-2 border rounded px-3 py-2 text-sm hover:bg-gray-50">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4"><path d="M15.75 9V5.25A2.25 2.25 0 0013.5 3h-6A2.25 2.25 0 005.25 5.25v13.5A2.25 2.25 0 007.5 21h6a2.25 2.25 0 002.25-2.25V15"/><path d="M12 9l3-3m0 0l3 3m-3-3v12"/></svg>
+      Déconnexion
+    </button>
+  </div>
+</header>
+ 

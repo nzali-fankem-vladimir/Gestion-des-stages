@@ -1,0 +1,36 @@
+server:
+  port: 8080
+  springdoc:
+    swagger-ui:
+      path: /swagger-ui.html
+
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/gestionDesStages?createDatabaseIfNotExist=true&useSSL=false&useUnicode=true&useJDBCCompliantTimezoneShift=true
+    driver-class-name: org.postgresql.Driver
+    username: postgres
+    password: ngaland
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 10MB
+
+file:
+  upload-dir: C:\Users\49151\Desktop\api\uploads
+  images-dir: C:\Users\49151\Desktop\api\uploads\images
+  documents-dir: C:\Users\49151\Desktop\api\uploads\documents
+  profiles-dir: C:\Users\49151\Desktop\api\uploads\profiles
+
+jwt:
+  secret:
+    key: F06PBJ6GzaTRCyiAycvwVHn0Mkgi9ztGpl6DIkULwtDcJ2y17uDwYS0XdrNjIIfWKAvWPoyAwBLHvHKnDzzPmmXWEpaRbWVG8zGkIViUWumw64U6nGOE2d5a7Zb9sQaOrmYfxCHTbPinjbSOoMuSJhk793ewS3COygGtNoAKjGZgiwzlWpIgAYDxTDHzJAL6gp8YEuxmq5CpovVtTm6V4hvEf3kA7zBmjWctjTULcXlQ2VjfhH6WI48lJ5gqBZWl
+  expiration: 86400000
